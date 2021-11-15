@@ -6,20 +6,21 @@ var timeBlocks = $('.hour');
 var now = parseInt(moment().format('H'));
 // function to show the past, present, or future
 $.each(timeBlocks, function (i, hour) {
-  var timeId = parseInt($(this).attr('id'));
-  if (timeId === now) {
-    $(this).next().addClass('present');
-  } else if (timeId < now) {
-    $(this).next().addClass('past');
-  } else if (timeId > now) {
-    $(this).next().addClass('future');
-  }
-});
+    var timeId = parseInt($(this).attr('id').replace('div', ''));
+    if (timeId === now) {
+      $(this).next().addClass('present');
+    } else if (timeId < now) {
+      $(this).next().addClass('past');
+    } else if (timeId > now) {
+      $(this).next().addClass('future');
+    }
+  });
 // start with empty array
 let storedPlans = [];
 // if nothing returned from local, establish your default array
 if (!localStorage.plans) {
   const defaultPlansArr = [
+    { data: '' },
     { data: '' },
     { data: '' },
     { data: '' },

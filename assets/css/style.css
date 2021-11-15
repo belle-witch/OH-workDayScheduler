@@ -69,3 +69,19 @@ textarea{
   font-size: 20px;
   transition: all .3s ease-in-out;
 }
+
+.logo {
+  margin-right: -15px;
+  margin-left: -15px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+img {
+  padding-top: 100px;
+  text-align: center;
+  border-style: none;
+  width: 110%;
+  height: auto;
+  max-width: 100px;
+}
