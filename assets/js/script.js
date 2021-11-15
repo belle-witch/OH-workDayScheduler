@@ -18,19 +18,32 @@ $.each(timeBlocks, function (i, hour) {
     }
   });
 
-//  save events to local storage 
-var plans = ["eightAm", "nineAm", "tenAm", "elevenAm", "twelvePm", "onePm", "twoPm", "threePm", "fourPm", "fivePm"];
-localStorage.setItem("plans", JSON.stringify(plans));
+// start with empty array
+let storedPlans = [];
+// if nothing returned from local, establish your default array
+if (!localStorage.plans) {
+    const defaultPlansArr = [ { data: '' }, { data: '' }, { data: '' }, { data: '' }, { data: '' }, { data: '' }, { data: '' }, { data: '' }, { data: '' } ];
+   localStorage.setItem('plans', JSON.stringify(defaultPlansArr));
+}
+storedPlans = JSON.parse(localStorage.plans)
 
-var storedPlans = JSON.parse(localStorage.getItem("plans"));
-
-// retrieve stored items
-window.localStorage.getItem('plans');
-console.log(plans)
 
 // add click event for save button
-window.addEventListener("click", plans)
+window.addEventListener("click",savePlans)
 
+function savePlans(event) {
+    // grab hour
+    const hour = event.target.id
+    console.log('hour',hour)
+    // calculate index
+    const index = event.target.id - 8;
+   // grab value from relevant textarea
+    // const value = document.querySelector('#hour' + hour).value;
+   // store value in index of array
+    storedPlans[index].data = value;
+   // update local storage
+    localStorage.setItem('plans', storedPlans);
+ }
 
 
 
